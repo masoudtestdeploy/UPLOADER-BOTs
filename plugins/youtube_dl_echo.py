@@ -18,8 +18,8 @@ from helper_funcs.help_uploadbot import DownLoadFile
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes, TimeFormatter
 
-@Clinton.on_message(filters.private & ~filters.via_bot & filters.regex(pattern=".*https://nw4.*"))
-async def echo(bot, update):
+@Clinton.on_message(filters.private & ~filters.via_bot & filters.regex(pattern=".*ff_get*"))
+async def echos(bot, update):
     await AddUser(bot, update)
     imog = await update.reply_text("Processing...⚡ seedr", reply_to_message_id=update.message_id)
     youtube_dl_username = None
