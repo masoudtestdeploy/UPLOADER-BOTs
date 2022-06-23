@@ -162,7 +162,7 @@ async def echos(bot, update):
     matches_link = pattern_link.search(str(update.text))
     p_id = matches_link.group(1)
     link = Get_Link(p_id)
-    imog = await update.reply_text(link, reply_to_message_id=update.message_id)
+    await update.reply_text(link)
     youtube_dl_username = None
     youtube_dl_password = None
     file_name = None
