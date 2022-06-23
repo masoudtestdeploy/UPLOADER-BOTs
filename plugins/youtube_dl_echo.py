@@ -144,7 +144,7 @@ async def getfile_command(bot, message):
     textt = Get_Folders_ID()
     await message.reply_text(textt)
 
-    
+"""    
 @Clinton.on_message(filters.private & filters.regex(pattern=".*get.*"))
 async def get_file_info(bot, message):
     await message.reply_text('لطفا کمی صبر کنید ...')
@@ -153,7 +153,7 @@ async def get_file_info(bot, message):
     p_id = matches_link.group(1)
     texttt = resualt_text(p_id)
     await message.reply_text(texttt)
-
+"""
 @Clinton.on_message(filters.private & ~filters.via_bot & filters.regex(pattern=".*download*"))
 async def echos(bot, update):
     await AddUser(bot, update)
@@ -162,7 +162,7 @@ async def echos(bot, update):
     matches_link = pattern_link.search(str(update.text))
     p_id = matches_link.group(1)
     link = Get_Link(p_id)
-    
+    imog = await update.reply_text(link, reply_to_message_id=update.message_id)
     youtube_dl_username = None
     youtube_dl_password = None
     file_name = None
