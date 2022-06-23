@@ -166,7 +166,7 @@ async def echos(bot, update):
     youtube_dl_username = None
     youtube_dl_password = None
     file_name = None
-    url = link
+    url = Get_Link(p_id)
     if "|" in url:
         url_parts = url.split("|")
         if len(url_parts) == 2:
@@ -390,7 +390,7 @@ async def echos(bot, update):
         parse_mode="html",
         reply_to_message_id=update.message_id)
 
-        
+"""        
 @Clinton.on_message(filters.private & ~filters.via_bot & filters.regex(pattern=".*http.*"))
 async def echo(bot, update):
     await AddUser(bot, update)
@@ -621,3 +621,4 @@ async def echo(bot, update):
         reply_markup=reply_markup,
         parse_mode="html",
         reply_to_message_id=update.message_id)
+"""
