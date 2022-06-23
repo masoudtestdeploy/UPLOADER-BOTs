@@ -155,14 +155,14 @@ async def get_file_info(bot, message):
     await message.reply_text(texttt)
 """
 @Clinton.on_message(filters.private & ~filters.via_bot & filters.regex(pattern=".*download*"))
-async def echos(bot, update):
+async def echo(bot, update):
     await AddUser(bot, update)
     imog = await update.reply_text("Processing...⚡ seedr", reply_to_message_id=update.message_id)
     pattern_link = re.compile(r'^\/download_(.*)')
     matches_link = pattern_link.search(str(update.text))
     p_id = matches_link.group(1)
     link = Get_Link(p_id)
-    await update.reply_text(link)
+    #await update.reply_text(link)
     youtube_dl_username = None
     youtube_dl_password = None
     file_name = None
