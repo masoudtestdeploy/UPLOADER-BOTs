@@ -33,7 +33,11 @@ async def youtube_dl_call_back(bot, update):
     except (FileNotFoundError) as e:
         await update.message.delete(True)
         return False
-    youtube_dl_url = update.message.reply_to_message.text
+    
+    
+    url = "https://rs17.seedr.cc/ff_get/1188588415/Obi-Wan.Kenobi.S01E06.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv?st=-90V4va8M9m0ouQRbIIstQ&e=1656155384 | KN.Obi-Wan.Kenobi.S01E06.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv"
+    #youtube_dl_url = update.message.reply_to_message.text
+    youtube_dl_url = url 
     custom_file_name = str(response_json.get("title"))[:50] + "_" + youtube_dl_format + "." + youtube_dl_ext
     youtube_dl_username = None
     youtube_dl_password = None
