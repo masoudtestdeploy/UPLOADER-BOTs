@@ -43,13 +43,17 @@ async def ddl_call_back(bot, update):
     tg_send_type, youtube_dl_format, youtube_dl_ext = cb_data.split("=")
     thumb_image_path = Config.DOWNLOAD_LOCATION + \
         "/" + str(update.from_user.id) + ".jpg"
-    pattern_link = re.compile(r'^\/download_(.*)')
-    matches_link = pattern_link.search(str(update.message.reply_to_message.text))
-    p_id = matches_link.group(1)
-    link = Get_Link(p_id)
-    name = seedr.get_file(p_id)["name"]
-    url = "{} | KN.{}".format(link,name)
-    youtube_dl_url = url
+    try:
+        pattern_link = re.compile(r'^\/download_(.*)')
+        matches_link = pattern_link.search(str(update.message.reply_to_message.text))
+        p_id = matches_link.group(1)
+        link = Get_Link(p_id)
+        name = seedr.get_file(p_id)["name"]
+        url = "{} | KN.{}".format(link,name)
+        youtube_dl_url = url
+    except:
+        youtube_dl_url = update.message.reply_to_message.text
+    
     custom_file_name = os.path.basename(youtube_dl_url)
     if "|" in youtube_dl_url:
         url_parts = youtube_dl_url.split("|")
