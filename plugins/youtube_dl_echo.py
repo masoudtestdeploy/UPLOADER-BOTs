@@ -101,7 +101,7 @@ async def echox(bot, update):
     youtube_dl_username = None
     youtube_dl_password = None
     file_name = None
-    url = "https://rs17.seedr.cc/ff_get/1188588415/Obi-Wan.Kenobi.S01E06.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv?st=-90V4va8M9m0ouQRbIIstQ&e=1656155384 | KN.Obi-Wan.Kenobi.S01E06.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv"
+    url = "{} | KN.{}".format(link,name)
     if "|" in url:
         url_parts = url.split("|")
         if len(url_parts) == 2:
