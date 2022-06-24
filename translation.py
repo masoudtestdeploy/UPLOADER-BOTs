@@ -4,7 +4,7 @@ class Translation(object):
 میتونی باهام از همه جا دانلود کنی حتی تورنت !
 
 /help برای دریافت راهنما!"""
-    FORMAT_SELECTION = "فرمت مورد نظرت رو انتخاب کن : <a href='{}'>سایز فایل ها تقریبی است</a> \nاگر تامبنیل میخوای یه عکس برام بفرست\nمیتونی از  /deletethumbnail برای حذفش استفاده کنی"
+    FORMAT_SELECTION = "فرمت مورد نظرت رو انتخاب کن : <a href='{}'>سایز فایل ها تقریبی است</a> \nاگر تامبنیل میخوای یه عکس برام بفرست\nمیتونی از  /delthumbnail برای حذفش استفاده کنی"
     SET_CUSTOM_USERNAME_PASSWORD = """اگر ویدیو پرمیوم میخوای از فرمت زیر استفاده کن:
 URL | filename | username | password"""
     DOWNLOAD_START = "📥 در حال دانلود ..."
