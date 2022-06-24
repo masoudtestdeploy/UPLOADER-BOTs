@@ -26,16 +26,30 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
 from PIL import Image
+from seedr import SeedrAPI
+import re 
+
+seedr = SeedrAPI(email="masoudakhoondi1@gmail.com", password="12345678")
+def Get_Link(ID):
+    Get_File_link = seedr.get_file(ID)["url"]
+    return Get_File_link
 
 
 async def ddl_call_back(bot, update):
+    print("inja")
     logger.info(update)
     cb_data = update.data
     # youtube_dl extractors
     tg_send_type, youtube_dl_format, youtube_dl_ext = cb_data.split("=")
     thumb_image_path = Config.DOWNLOAD_LOCATION + \
         "/" + str(update.from_user.id) + ".jpg"
-    youtube_dl_url = update.message.reply_to_message.text
+    pattern_link = re.compile(r'^\/download_(.*)')
+    matches_link = pattern_link.search(str(update.message.reply_to_message.text))
+    p_id = matches_link.group(1)
+    link = Get_Link(p_id)
+    name = seedr.get_file(p_id)["name"]
+    url = "{} | KN.{}".format(link,name)
+    youtube_dl_url = url
     custom_file_name = os.path.basename(youtube_dl_url)
     if "|" in youtube_dl_url:
         url_parts = youtube_dl_url.split("|")
