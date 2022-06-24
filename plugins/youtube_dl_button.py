@@ -242,7 +242,7 @@ async def youtube_dl_call_back(bot, update):
             message_id=update.message.message_id)
         else:
             await bot.edit_message_text(
-            text=Translation.UPLOAD_START,
+            text="test"+url,
             chat_id=update.message.chat.id,
             message_id=update.message.message_id)
             start_time = time.time()
