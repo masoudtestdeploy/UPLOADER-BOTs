@@ -128,7 +128,7 @@ async def youtube_dl_call_back(bot, update):
             youtube_dl_username = url_parts[2]
             youtube_dl_password = url_parts[3]
         else:
-            for entity in update.message.reply_to_message.entities:
+            for entity in url:
                 if entity.type == "text_link":
                     youtube_dl_url = entity.url
                 elif entity.type == "url":
@@ -144,7 +144,7 @@ async def youtube_dl_call_back(bot, update):
         if youtube_dl_password is not None:
             youtube_dl_password = youtube_dl_password.strip()
     else:
-        for entity in update.message.reply_to_message.entities:
+        for entity in url:
             if entity.type == "text_link":
                 youtube_dl_url = entity.url
             elif entity.type == "url":
@@ -152,7 +152,7 @@ async def youtube_dl_call_back(bot, update):
                 l = entity.length
                 youtube_dl_url = youtube_dl_url[o:o + l]
     await bot.edit_message_text(
-    text=custom_file_name,
+    text=custom_file_name+"testtttttt",
     chat_id=update.message.chat.id,
     message_id=update.message.message_id)
     description = Translation.CUSTOM_CAPTION_UL_FILE
