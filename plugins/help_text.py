@@ -56,7 +56,7 @@ def Get_Folders_ID():
 
         size = human_readable_size(folders[num]["size"])
 
-        out = "نام فایل :\n{} \nدانلود فولدر : /get_{} \nحجم فولدر : {} \n\n++++++++++++++\n\n".format(name,idd,size)
+        out = "نام فایل :\n{} \nدانلود فولدر : /getfile_{} \nحجم فولدر : {} \n\n++++++++++++++\n\n".format(name,idd,size)
 
         num = num+1
 
@@ -160,10 +160,10 @@ async def add_file(bot, message):
         await message.reply_text("خطایی رخ داده است ")
 
 
-@Clinton.on_message(filters.private & filters.regex(pattern=".*get.*"))
+@Clinton.on_message(filters.private & filters.regex(pattern=".*getfile.*"))
 async def get_file_info(bot, message):
     await message.reply_text('لطفا کمی صبر کنید ...')
-    pattern_link = re.compile(r'^\/get_(.*)')
+    pattern_link = re.compile(r'^\/getfile_(.*)')
     matches_link = pattern_link.search(str(message.text))
     p_id = matches_link.group(1)
     texttt = resualt_text(p_id)
