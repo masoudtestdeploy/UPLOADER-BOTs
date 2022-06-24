@@ -114,7 +114,7 @@ async def youtube_dl_call_back(bot, update):
     url = "{} | KN.{}".format(link,name)
     #youtube_dl_url = update.message.reply_to_message.text
     youtube_dl_url = url 
-    custom_file_name = str(response_json.get("title"))[:50] + "_" + youtube_dl_format + "." + youtube_dl_ext
+    custom_file_name = "KN"+name
     youtube_dl_username = None
     youtube_dl_password = None
     if "|" in youtube_dl_url:
@@ -152,7 +152,7 @@ async def youtube_dl_call_back(bot, update):
                 l = entity.length
                 youtube_dl_url = youtube_dl_url[o:o + l]
     await bot.edit_message_text(
-    text=Translation.DOWNLOAD_START,
+    text=custom_file_name,
     chat_id=update.message.chat.id,
     message_id=update.message.message_id)
     description = Translation.CUSTOM_CAPTION_UL_FILE
