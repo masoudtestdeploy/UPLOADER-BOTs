@@ -97,7 +97,7 @@ async def echox(bot, update):
     name = seedr.get_file(p_id)["name"]
     
     await AddUser(bot, update)
-    imog = await update.reply_text("Processing... Seedr⚡", reply_to_message_id=update.message_id)
+    imog = await update.reply_text(name, reply_to_message_id=update.message_id)
     youtube_dl_username = None
     youtube_dl_password = None
     file_name = None
