@@ -124,7 +124,7 @@ def deleteFolder(Folder_id):
     if 'error' not in response:
          #! If folder is deleted successfully
         if response['result'] == True:
-            return "deletedSuccessfully"
+            return "با موفقیت حذف شد"
     else:
         return response
 
@@ -175,7 +175,7 @@ def getFiles(id):
                 text += f"delete : /delete_{folder['id']}\n\n"
             for file in response['files']:
                 text += f"<code>{'🎬' if file['play_video'] == True else '🎵' if file['play_audio'] == True else '📄'} {file['name']}</code> <b>[{convertSize(file['size'])}]</b>\n\n"
-                text += f"link : /fileLink_{'v' if file['play_video'] == True else 'a' if file['play_audio'] == True else 'u'}{file['folder_file_id']}\n"
+                text += f"link : /fileLink_{file['folder_file_id']}\n"
                 text += f"delete : /remove_{file['folder_file_id']}\n\n"
             return text
     else:
@@ -196,7 +196,7 @@ def removeFile(fileid):
     if 'error' not in response:
         #! If file removed successfully
         if response['result'] == True:
-            return "removedSuccessfully"
+            return "با موفقیت حذف شد"
     else:
         return response
 
