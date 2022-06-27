@@ -105,17 +105,20 @@ async def youtube_dl_call_back(bot, update):
         await update.message.delete(True)
         return False
     
-    pattern_link = re.compile(r'^\/download_(.*)')
-    matches_link = pattern_link.search(str(update.message.reply_to_message.text))
-    p_id = matches_link.group(1)
-    link = Get_Link(p_id)
-    name = seedr.get_file(p_id)["name"]
+    try:
+        pattern_link = re.compile(r'^\/download_(.*)')
+        matches_link = pattern_link.search(str(update.message.reply_to_message.text))
+        p_id = matches_link.group(1)
+        link = Get_Link(p_id)
+        name = seedr.get_file(p_id)["name"]
+        url = "{} | KN.{}".format(link,name)
+        youtube_dl_url = url
+    except:
+        print("dasdhasdujhasiduhasiduaysidosahdoisdsudsadhsa")
+        youtube_dl_url = update.message.reply_to_message.text
     
-    
-    url = "{} | KN.{}".format(link,name)
-    #youtube_dl_url = update.message.reply_to_message.text
-    youtube_dl_url = url 
-    custom_file_name = "KN"+name
+    custom_file_name = os.path.basename(youtube_dl_url)
+    #custom_file_name = "KN"+name
     youtube_dl_username = None
     youtube_dl_password = None
     if "|" in youtube_dl_url:
