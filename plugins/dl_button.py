@@ -139,6 +139,8 @@ async def ddl_call_back(bot, update):
                 message_id=update.message.message_id
             )
         else:
+            cp_video = await cult_small_video(download_directory, "df"+download_directory, 30, 60)
+            print(cp_video)
             # ref: message from @SOURCES_CODES
             start_time = time.time()
             # try to upload file
@@ -194,7 +196,7 @@ async def ddl_call_back(bot, update):
             elif tg_send_type == "video":
                  width, height, duration = await Mdata01(download_directory)
                  thumb_image_path = await Gthumb02(bot, update, duration, download_directory)
-                 cp_video = await cult_small_video(download_directory, "df"+download_directory, 30, 60)
+            
                  print(cp_video)
                  await bot.send_video(
                     chat_id=update.message.chat.id,
@@ -223,6 +225,7 @@ async def ddl_call_back(bot, update):
                 pass
             time_taken_for_download = (end_one - start).seconds
             time_taken_for_upload = (end_two - end_one).seconds
+            
             await bot.edit_message_text(
                 text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS.format(time_taken_for_download, time_taken_for_upload),
                 chat_id=update.message.chat.id,
