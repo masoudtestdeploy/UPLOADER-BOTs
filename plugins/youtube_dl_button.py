@@ -22,6 +22,7 @@ from plugins.custom_thumbnail import *
 from pyrogram.types import InputMediaPhoto
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
 from seed import *
+import re 
 
 
 async def youtube_dl_call_back(bot, update):
