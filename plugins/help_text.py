@@ -25,7 +25,7 @@ from plugins.seed import *
 
 
 @Clinton.on_message(filters.private & filters.command(["account"]))
-async def account(bot, update):
+async def accounyt(bot, update):
     # logger.info(update)
     texttt =  account()
     await AddUser(bot, update)
@@ -38,7 +38,7 @@ async def account(bot, update):
     )
 
 @Clinton.on_message(filters.private & filters.command(["active"]))
-async def active(bot, update):
+async def activye(bot, update):
     # logger.info(update)
     texttt = active()
     await AddUser(bot, update)
@@ -51,7 +51,7 @@ async def active(bot, update):
     )
     
 @Clinton.on_message(filters.private & filters.regex(pattern=".*magnet:?.*"))
-async def magnet(bot, update):
+async def magnety(bot, update):
     # logger.info(update)
     texttt = addTorrent(magnetLink=update.text)
     await AddUser(bot, update)
@@ -64,7 +64,7 @@ async def magnet(bot, update):
     )
     
 @Clinton.on_message(filters.private & filters.regex(pattern=".*delete_.*"))
-async def deleteFolder(bot, update):
+async def deleteFoldery(bot, update):
     # logger.info(update)
     pattern_link = re.compile(r'^\/delete_(.*)')
     matches_link = pattern_link.search(str(update.text))
@@ -81,7 +81,7 @@ async def deleteFolder(bot, update):
     
 
 @Clinton.on_message(filters.private & filters.regex(pattern=".*getLink_.*"))
-async def getLink(bot, update):
+async def getLinky(bot, update):
     # logger.info(update)
     pattern_link = re.compile(r'^\/getLink_(.*)')
     matches_link = pattern_link.search(str(update.text))
@@ -99,7 +99,7 @@ async def getLink(bot, update):
   
   
 @Clinton.on_message(filters.private & filters.command(["folders"]))
-async def folders(bot, update): 
+async def foldersy(bot, update): 
     texttt = folders()
     await AddUser(bot, update)
     await bot.send_message(
@@ -111,7 +111,7 @@ async def folders(bot, update):
     )
 
 @Clinton.on_message(filters.private & filters.command(["wishlist"]))
-async def folders(bot, update): 
+async def foldersy(bot, update): 
     texttt = wishlist()
     await AddUser(bot, update)
     await bot.send_message(
@@ -122,7 +122,7 @@ async def folders(bot, update):
         reply_to_message_id=update.message_id
     )    
 @Clinton.on_message(filters.private & filters.regex(pattern=".*getFiles_.*"))
-async def getFiles(bot, update):
+async def getFilesy(bot, update):
     # logger.info(update)
     pattern_link = re.compile(r'^\/getFiles_(.*)')
     matches_link = pattern_link.search(str(update.text))
@@ -138,7 +138,7 @@ async def getFiles(bot, update):
     )
     
 @Clinton.on_message(filters.private & filters.regex(pattern=".*fileLink_.*"))
-async def getLink(bot, update):
+async def getLinky(bot, update):
     # logger.info(update)
     pattern_link = re.compile(r'^\/fileLink_(.*)')
     matches_link = pattern_link.search(str(update.text))
@@ -154,7 +154,7 @@ async def getLink(bot, update):
     )
     
     
-@Clinton.on_message(filters.private & filters.regex(pattern=".*remove_.*"))
+@Clinton.on_messagey(filters.private & filters.regex(pattern=".*remove_.*"))
 async def getLink(bot, update):
     # logger.info(update)
     pattern_link = re.compile(r'^\/remove_(.*)')
