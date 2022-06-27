@@ -17,7 +17,7 @@ from helper_funcs.display_progress import humanbytes
 from helper_funcs.help_uploadbot import DownLoadFile
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes, TimeFormatter
-from seed import seed
+from plugins.seed import *
 import re 
 
 @Clinton.on_message(filters.private & ~filters.via_bot & filters.regex(pattern=".*DlLink_.*"))
