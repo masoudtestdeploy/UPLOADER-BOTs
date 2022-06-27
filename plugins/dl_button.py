@@ -139,8 +139,7 @@ async def ddl_call_back(bot, update):
                 message_id=update.message.message_id
             )
         else:
-            cp_video = await cult_small_video(download_directory, "df"+download_directory, 30, 60)
-            print(cp_video)
+            
             # ref: message from @SOURCES_CODES
             start_time = time.time()
             # try to upload file
