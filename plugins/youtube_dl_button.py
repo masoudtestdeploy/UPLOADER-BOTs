@@ -254,6 +254,7 @@ async def youtube_dl_call_back(bot, update):
                 300,
                 9
             )
+            print(images)
             await bot.edit_message_text(
             text="test"+url,
             chat_id=update.message.chat.id,
