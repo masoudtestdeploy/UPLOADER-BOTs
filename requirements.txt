@@ -13,3 +13,5 @@ beautifulsoup4
 pyrogram==1.4.16
 seedr
 seedrcc
+json
+urllib3==1.26.9
