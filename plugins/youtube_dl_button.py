@@ -21,7 +21,6 @@ from translation import Translation
 from plugins.custom_thumbnail import *
 from pyrogram.types import InputMediaPhoto
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
-from helper_funcs.help_Nekmo_ffmpeg import *
 
 from seedr import SeedrAPI
 import re 
