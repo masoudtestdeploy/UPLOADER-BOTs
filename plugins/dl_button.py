@@ -28,7 +28,7 @@ from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
 from PIL import Image
 import re 
-
+from seed import *
 
 
 async def ddl_call_back(bot, update):
@@ -40,16 +40,16 @@ async def ddl_call_back(bot, update):
     thumb_image_path = Config.DOWNLOAD_LOCATION + \
         "/" + str(update.from_user.id) + ".jpg"
     try:
-        pattern_link = re.compile(r'^\/download_(.*)')
+        pattern_link = re.compile(r'^\/DlLink_(.*)')
         matches_link = pattern_link.search(str(update.message.reply_to_message.text))
         p_id = matches_link.group(1)
-        link = Get_Link(p_id)
-        name = seedr.get_file(p_id)["name"]
+        link = gLink(p_id)
+        name = nLink(p_id)
         url = "{} | KN.{}".format(link,name)
         youtube_dl_url = url
     except:
         youtube_dl_url = update.message.reply_to_message.text
-    
+        
     custom_file_name = os.path.basename(youtube_dl_url)
     if "|" in youtube_dl_url:
         url_parts = youtube_dl_url.split("|")
