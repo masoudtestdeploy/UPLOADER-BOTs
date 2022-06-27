@@ -159,7 +159,9 @@ async def youtube_dl_call_back(bot, update):
     text=custom_file_name+"testtttttt",
     chat_id=update.message.chat.id,
     message_id=update.message.message_id)
+    print(234)
     description = Translation.CUSTOM_CAPTION_UL_FILE
+    print(567)
     if "fulltitle" in response_json:
         description = response_json["fulltitle"][0:1021]
         # escape Markdown and special characters
