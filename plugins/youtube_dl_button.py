@@ -20,6 +20,7 @@ from database.access import clinton
 from translation import Translation
 from plugins.custom_thumbnail import *
 from pyrogram.types import InputMediaPhoto
+from helper_funcs.help_Nekmo_ffmpeg import generate_screen_shots
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
 
 from seedr import SeedrAPI
@@ -241,6 +242,15 @@ async def youtube_dl_call_back(bot, update):
             text=Translation.RCHD_TG_API_LIMIT.format(time_taken_for_download, humanbytes(file_size)),
             message_id=update.message.message_id)
         else:
+            is_w_f = False
+            images = await generate_screen_shots(
+                download_directory,
+                tmp_directory_for_each_user,
+                is_w_f,
+                "kenzomovie",
+                300,
+                9
+            )
             await bot.edit_message_text(
             text="test"+url,
             chat_id=update.message.chat.id,
@@ -314,7 +324,35 @@ async def youtube_dl_call_back(bot, update):
                     progress=progress_for_pyrogram,
                     progress_args=(Translation.UPLOAD_START,
                     update.message, start_time) )
-
+            if images is not None:
+                 i = 0
+                 caption = ""
+                 if is_w_f:
+                    caption = ""
+                 for image in images:
+                    if os.path.exists(image):
+                        if i == 0:
+                            media_album_p.append(
+                                InputMediaPhoto(
+                                media=image,
+                                caption=caption,
+                                parse_mode="html"
+                                )
+                            )
+                        else:
+                            media_album_p.append(
+                               InputMediaPhoto(
+                               media=image
+                               )
+                             )
+                        i = i + 1
+                 await bot.send_media_group(
+                        chat_id=update.message.chat.id,
+                        disable_notification=True,
+                        reply_to_message_id=update.message.message_id,
+                        media=media_album_p
+                    )   
+                    
             asyncio.create_task(clendir(tmp_directory_for_each_user))
             asyncio.create_task(clendir(thumbnail))
             await bot.edit_message_text(
