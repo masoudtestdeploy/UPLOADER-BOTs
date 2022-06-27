@@ -155,7 +155,7 @@ def folders():
             text = ''
             for i in response['folders']:
                 text += f"<b>📂 {i['fullname']}</b>\n\n💾 {convertSize(i['size'])}B, ⏰ {i['last_update']}"
-                text += f"\n\nfiles : /getFiles_{i['id']}\nlink: /getLink_{i['id']}\ndelete : /delete_{i['id']}\n\n"
+                text += f"\n\nfiles : /getFiles_{i['id']}\ndelete : /delete_{i['id']}\n\n"
             return text
                 #! If user has no files
         else:
