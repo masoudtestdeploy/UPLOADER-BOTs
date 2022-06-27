@@ -17,24 +17,19 @@ from helper_funcs.display_progress import humanbytes
 from helper_funcs.help_uploadbot import DownLoadFile
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes, TimeFormatter
-from seedr import SeedrAPI
+from seed import *
 import re 
 
-seedr = SeedrAPI(email="masoudakhoondi1@gmail.com", password="12345678")
-
-
-def Get_Link(ID):
-    Get_File_link = seedr.get_file(ID)["url"]
-    return Get_File_link
-
-@Clinton.on_message(filters.private & ~filters.via_bot & filters.regex(pattern=".*download.*"))
+@Clinton.on_message(filters.private & ~filters.via_bot & filters.regex(pattern=".*DlLink_.*"))
 async def echox(bot, update):
-    pattern_link = re.compile(r'^\/download_(.*)')
-    matches_link = pattern_link.search(str(update.text))
+    
+    pattern_link = re.compile(r'^\/DlLink_(.*)')
+    matches_link = pattern_link.search(str(update.message.reply_to_message.text))
     p_id = matches_link.group(1)
-    link = Get_Link(p_id)
-    name = seedr.get_file(p_id)["name"]
-    print(name)
+    link = gLink(p_id)
+    name = nLink(p_id)
+    url = "{} | KN.{}".format(link,name)
+    
     await AddUser(bot, update)
     imog = await update.reply_text(name, reply_to_message_id=update.message_id)
     youtube_dl_username = None
