@@ -18,10 +18,8 @@ from pyrogram import filters
 from database.adduser import AddUser
 from pyrogram import Client as Clinton
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
-from seedr import SeedrAPI
 import re
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-seedr = SeedrAPI(email="masoudakhoondi1@gmail.com", password="12345678")
 
 # Def Get Info
 
