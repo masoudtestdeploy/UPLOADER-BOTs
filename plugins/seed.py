@@ -187,7 +187,7 @@ def getLink(folderId):
 
     Get_File_link = seedr.get_file(folderId)["url"]
     Get_File_name = seedr.get_file(folderId)["name"]
-    text = f"🖿 <code>{Get_File_name}</code>\n\n🔗 <code>{Get_File_link}</code>"
+    text = f"🖿 Name :\n<code>{Get_File_name}</code>\n\n🔗Link \n<code>{Get_File_link}\n\n🔗DownLoad : /dl_{folderId}"
     return text
 
 def removeFile(fileid):
