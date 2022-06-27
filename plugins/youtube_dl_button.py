@@ -20,7 +20,6 @@ from database.access import clinton
 from translation import Translation
 from plugins.custom_thumbnail import *
 from pyrogram.types import InputMediaPhoto
-from helper_funcs.help_Nekmo_ffmpeg import generate_screen_shots
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
 
 from seedr import SeedrAPI
@@ -114,7 +113,7 @@ async def youtube_dl_call_back(bot, update):
         url = "{} | KN.{}".format(link,name)
         youtube_dl_url = url
     except:
-        print("dasdhasdujhasiduhasiduaysidosahdoisdsudsadhsa")
+        #print("dasdhasdujhasiduhasiduaysidosahdoisdsudsadhsa")
         youtube_dl_url = update.message.reply_to_message.text
     
     custom_file_name = os.path.basename(youtube_dl_url)
@@ -132,9 +131,9 @@ async def youtube_dl_call_back(bot, update):
             youtube_dl_username = url_parts[2]
             youtube_dl_password = url_parts[3]
         else:
-            for entity in url:
+            for entity in youtube_dl_url:
                 if entity.type == "text_link":
-                    youtube_dl_url = entity.url
+                    youtube_dl_url = entity.youtube_dl_url
                 elif entity.type == "url":
                     o = entity.offset
                     l = entity.length
@@ -148,9 +147,9 @@ async def youtube_dl_call_back(bot, update):
         if youtube_dl_password is not None:
             youtube_dl_password = youtube_dl_password.strip()
     else:
-        for entity in url:
+        for entity in youtube_dl_url:
             if entity.type == "text_link":
-                youtube_dl_url = entity.url
+                youtube_dl_url = entity.youtube_dl_url
             elif entity.type == "url":
                 o = entity.offset
                 l = entity.length
@@ -254,7 +253,14 @@ async def youtube_dl_call_back(bot, update):
                 300,
                 9
             )
-            print(images)
+            print("""g
+            g
+            g
+            g
+            g
+            g
+            g
+            g""")
             await bot.edit_message_text(
             text="test"+url,
             chat_id=update.message.chat.id,
