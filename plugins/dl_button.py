@@ -22,6 +22,8 @@ from translation import Translation
 from plugins.custom_thumbnail import *
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes, TimeFormatter
+from helper_funcs.help_Nekmo_ffmpeg import cult_small_video
+
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
@@ -192,6 +194,8 @@ async def ddl_call_back(bot, update):
             elif tg_send_type == "video":
                  width, height, duration = await Mdata01(download_directory)
                  thumb_image_path = await Gthumb02(bot, update, duration, download_directory)
+                 cp_video = await cult_small_video(download_directory, "df"+download_directory, 30, 60)
+                 print(cp_video)
                  await bot.send_video(
                     chat_id=update.message.chat.id,
                     video=download_directory,
