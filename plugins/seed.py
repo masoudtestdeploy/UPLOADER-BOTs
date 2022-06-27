@@ -187,7 +187,19 @@ def getLink(folderId):
 
     Get_File_link = seedr.get_file(folderId)["url"]
     Get_File_name = seedr.get_file(folderId)["name"]
-    text = f"🖿 Name :\n<code>{Get_File_name}</code>\n\n🔗Link \n<code>{Get_File_link}\n\n🔗DownLoad : /dl_{folderId}"
+    text = f"🖿 Name :\n<code>{Get_File_name}</code>\n\n🔗Link \n<code>{Get_File_link}\n\n🔗DownLoad : /DlLink_{folderId}"
+    return text
+
+def gLink(folderId):
+    seedr = SeedrAPI(email="masoudakhoondi1@gmail.com", password="12345678")
+    Get_File_link = seedr.get_file(folderId)["url"]
+    text = f"{Get_File_link}"
+    return text
+
+def nLink(folderId):
+    seedr = SeedrAPI(email="masoudakhoondi1@gmail.com", password="12345678")
+    Get_File_name = seedr.get_file(folderId)["name"]
+    text = f"{Get_File_name}"
     return text
 
 def removeFile(fileid):
