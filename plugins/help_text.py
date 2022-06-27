@@ -154,8 +154,8 @@ async def getLinky(bot, update):
     )
     
     
-@Clinton.on_messagey(filters.private & filters.regex(pattern=".*remove_.*"))
-async def getLink(bot, update):
+@Clinton.on_message(filters.private & filters.regex(pattern=".*remove_.*"))
+async def getLinkfg(bot, update):
     # logger.info(update)
     pattern_link = re.compile(r'^\/remove_(.*)')
     matches_link = pattern_link.search(str(update.text))
