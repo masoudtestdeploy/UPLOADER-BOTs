@@ -12,3 +12,8 @@ youtube-dl
 beautifulsoup4
 pyrogram==1.4.16
 seedr
+beautifulsoup4
+psycopg2-binary
+ffmpeg-python
+ffmpeg
+feedparser
