@@ -98,15 +98,15 @@ async def getLinky(bot, update):
    
   
   
-@Clinton.on_message(filters.private & filters.command(["folders"]))
-async def foldersy(bot, update): 
-    texttt = folders()
-    print(texttt)
+@Clinton.on_message(filters.private & filters.command(["folder"]))
+async def foldexrsy(bot, update): 
+    texttts = folders()
+    print(texttts)
     await AddUser(bot, update)
     await bot.send_message(
         chat_id=update.chat.id,
         text=texttt,
-        parse_mode="html",
+        #parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
     )
