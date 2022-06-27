@@ -21,6 +21,7 @@ from translation import Translation
 from plugins.custom_thumbnail import *
 from pyrogram.types import InputMediaPhoto
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
+from seed import *
 
 
 async def youtube_dl_call_back(bot, update):
@@ -33,8 +34,21 @@ async def youtube_dl_call_back(bot, update):
     except (FileNotFoundError) as e:
         await update.message.delete(True)
         return False
-    youtube_dl_url = update.message.reply_to_message.text
-    custom_file_name = str(response_json.get("title"))[:50] + "_" + youtube_dl_format + "." + youtube_dl_ext
+    
+    try:
+        pattern_link = re.compile(r'^\/DlLink_(.*)')
+        matches_link = pattern_link.search(str(update.message.reply_to_message.text))
+        p_id = matches_link.group(1)
+        link = gLink(p_id)
+        name = nLink(p_id)
+        url = "{} | KN.{}".format(link,name)
+        youtube_dl_url = url
+        custom_file_name = name
+    except:
+        youtube_dl_url = update.message.reply_to_message.text
+        custom_file_name = str(response_json.get("title"))[:50] + "_" + youtube_dl_format + "." + youtube_dl_ext
+    
+    
     youtube_dl_username = None
     youtube_dl_password = None
     if "|" in youtube_dl_url:
