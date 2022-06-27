@@ -63,7 +63,7 @@ async def magnety(bot, update):
         reply_to_message_id=update.message_id
     )
     
-@Clinton.on_message(filters.private & filters.regex(pattern=".*delete_.*"))
+@Clinton.on_message(filters.private & filters.regex(pattern=".*delete.*"))
 async def deleteFoldery(bot, update):
     # logger.info(update)
     pattern_link = re.compile(r'^\/delete_(.*)')
@@ -80,13 +80,14 @@ async def deleteFoldery(bot, update):
     )
     
 
-@Clinton.on_message(filters.private & filters.regex(pattern=".*getLink_.*"))
+@Clinton.on_message(filters.private & filters.regex(pattern=".*getLink.*"))
 async def getLinky(bot, update):
     # logger.info(update)
     pattern_link = re.compile(r'^\/getLink_(.*)')
     matches_link = pattern_link.search(str(update.text))
     p_id = matches_link.group(1)
     texttt = fileLink(p_id)
+    print(texttt)
     await AddUser(bot, update)
     await bot.send_message(
         chat_id=update.chat.id,
@@ -122,7 +123,7 @@ async def foldersy(bot, update):
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
     )    
-@Clinton.on_message(filters.private & filters.regex(pattern=".*getFiles_.*"))
+@Clinton.on_message(filters.private & filters.regex(pattern=".*getFiles.*"))
 async def getFilesy(bot, update):
     # logger.info(update)
     pattern_link = re.compile(r'^\/getFiles_(.*)')
@@ -138,7 +139,7 @@ async def getFilesy(bot, update):
         reply_to_message_id=update.message_id
     )
     
-@Clinton.on_message(filters.private & filters.regex(pattern=".*fileLink_.*"))
+@Clinton.on_message(filters.private & filters.regex(pattern=".*fileLink.*"))
 async def getLinky(bot, update):
     # logger.info(update)
     pattern_link = re.compile(r'^\/fileLink_(.*)')
@@ -155,7 +156,7 @@ async def getLinky(bot, update):
     )
     
     
-@Clinton.on_message(filters.private & filters.regex(pattern=".*remove_.*"))
+@Clinton.on_message(filters.private & filters.regex(pattern=".*remove.*"))
 async def getLinkfg(bot, update):
     # logger.info(update)
     pattern_link = re.compile(r'^\/remove_(.*)')
