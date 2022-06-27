@@ -20,7 +20,7 @@ from pyrogram import Client as Clinton
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 import re
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from seed import seed
+from plugins.seed import *
 # Def Get Info
 
 
