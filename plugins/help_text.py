@@ -80,25 +80,6 @@ async def deleteFoldery(bot, update):
     )
     
 
-@Clinton.on_message(filters.private & filters.regex(pattern=".*getLink.*"))
-async def getLinky(bot, update):
-    # logger.info(update)
-    pattern_link = re.compile(r'^\/getLink_(.*)')
-    matches_link = pattern_link.search(str(update.text))
-    p_id = matches_link.group(1)
-    texttt = fileLink(p_id)
-    print(texttt)
-    await AddUser(bot, update)
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=texttt,
-        parse_mode="html",
-        disable_web_page_preview=True,
-        reply_to_message_id=update.message_id
-    )
-   
-  
-  
 @Clinton.on_message(filters.private & filters.command(["folder"]))
 async def foldexrsy(bot, update): 
     texttts = folders()
