@@ -27,13 +27,8 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
 from PIL import Image
-from seedr import SeedrAPI
 import re 
 
-seedr = SeedrAPI(email="masoudakhoondi1@gmail.com", password="12345678")
-def Get_Link(ID):
-    Get_File_link = seedr.get_file(ID)["url"]
-    return Get_File_link
 
 
 async def ddl_call_back(bot, update):
