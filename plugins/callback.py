@@ -28,7 +28,7 @@ async def button(bot, update):
             texttts = folders()
             print(texttts)
             await bot.send_message(
-                chat_id=update.chat.id,
+                chat_id=update.message.chat.id,
                 text=texttts, 
                 #parse_mode="html",
                 #reply_markup=Button.BUTTONS01
@@ -37,7 +37,7 @@ async def button(bot, update):
         else:    
           print(texttt)
           await bot.send_message(
-                chat_id=update.chat.id,
+                chat_id=update.message.chat.id,
                 text=texttts, 
                 #parse_mode="html",
                 reply_markup=Button.refresh
