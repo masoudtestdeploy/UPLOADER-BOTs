@@ -14,3 +14,4 @@ class Button(object):
                                           [ InlineKeyboardButton(text="📁 ThePirateBay", callback_data='00'),
                                             InlineKeyboardButton(text="🔍 ꜱᴇᴀʀᴄʜ", switch_inline_query_current_chat="4 ") ],
                                           [ InlineKeyboardButton(text="❌", callback_data="X0") ] ] )
+      refresh = InlineKeyboardMarkup( [ [ InlineKeyboardButton(text="🔍 بروزرسانی وضعیت", callback_data='ref') ]] )
