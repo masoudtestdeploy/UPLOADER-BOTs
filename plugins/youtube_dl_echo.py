@@ -20,10 +20,10 @@ from helper_funcs.display_progress import progress_for_pyrogram, humanbytes, Tim
 from plugins.seed import *
 import re 
 
-@Clinton.on_message(filters.private & ~filters.via_bot & filters.regex(pattern=".*DlLink_.*"))
+@Clinton.on_message(filters.private & ~filters.via_bot & filters.regex(pattern=".*download.*"))
 async def echox(bot, update):
     
-    pattern_link = re.compile(r'^\/DlLink_(.*)')
+    pattern_link = re.compile(r'^\/download_(.*)')
     matches_link = pattern_link.search(str(update.message.reply_to_message.text))
     p_id = matches_link.group(1)
     link = gLink(p_id)
