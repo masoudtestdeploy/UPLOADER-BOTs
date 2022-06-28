@@ -44,14 +44,25 @@ async def activye(bot, update):
     # logger.info(update)
     texttt = active()
     await AddUser(bot, update)
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=texttt,
-        parse_mode="html",
-        disable_web_page_preview=True,
-        reply_to_message_id=update.message_id,
-        reply_markup=Button.refresh
-    )
+    if texttt == "noActiveTorrents":
+        texttts = folders()
+        #print(texttts)
+        await bot.send_message(
+            chat_id=update.chat.id,
+            text=texttts,
+            #parse_mode="html",
+            disable_web_page_preview=True,
+            reply_to_message_id=update.message_id
+        )
+    else:    
+        await bot.send_message(
+            chat_id=update.chat.id,
+            text=texttt,
+            parse_mode="html",
+            disable_web_page_preview=True,
+            reply_to_message_id=update.message_id,
+            reply_markup=Button.refresh
+        )
     
 @Clinton.on_message(filters.private & filters.regex(pattern=".*magnet:?.*"))
 async def magnety(bot, update):
