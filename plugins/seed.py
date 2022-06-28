@@ -173,7 +173,7 @@ def getFiles(id):
             for folder in response['folders']:
                 text += f"🖿 {folder['name']} <b>[ {convertSize(folder['size'])}]</b>\n\n"
                 text += f"files : /getFiles_{folder['id']}\n"
-                text += f"link : /getLink_{folder['id']}\n"
+                #text += f"link : /getLink_{folder['id']}\n"
                 text += f"delete : /delete_{folder['id']}\n\n"
             for file in response['files']:
                 text += f"<code>{'🎬' if file['play_video'] == True else '🎵' if file['play_audio'] == True else '📄'} {file['name']}</code> <b>[{convertSize(file['size'])}]</b>\n\n"
@@ -189,7 +189,7 @@ def getLink(folderId):
 
     Get_File_link = seedr.get_file(folderId)["url"]
     Get_File_name = seedr.get_file(folderId)["name"]
-    text = f"🖿 Name :\n<code>{Get_File_name}</code>\n\n🔗Link \n<code>{Get_File_link}\n\n🔗DownLoad : /DlLink_{folderId}"
+    text = f"🖿 Name :\n<code>{Get_File_name}</code>\n\n🔗Link \n<code>{Get_File_link}\n\n🔗DownLoad : /download_{folderId}"
     return text
 
 def gLink(folderId):
