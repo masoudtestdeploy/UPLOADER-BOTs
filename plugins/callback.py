@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # (c) Shrimadhav U K | Modified By > @DC4_WARRIOR
-
+import asyncio
 from pyrogram import filters
 from pyrogram import Client as Clinton
 from plugins.youtube_dl_button import youtube_dl_call_back
@@ -26,16 +26,18 @@ async def button(bot, update):
         
         if texttt == "noActiveTorrents":
             texttts = folders()
+            print(texttts)
             await bot.edit_message_text(
                 text=texttts,
-                chat_id=update.chat.id,
-                message_id=update.message_id
+                chat_id=update.message.chat.id,
+                message_id=update.message.message_id
             )
         else:    
-            await bot.edit_message_text(
+          print(texttt)
+          await bot.edit_message_text(
                 text=texttt,
-                chat_id=update.chat.id,
-                message_id=update.message_id,
+                chat_id=update.message.chat.id,
+                message_id=update.message.message_id
                 reply_markup=Button.refresh
             )
             
