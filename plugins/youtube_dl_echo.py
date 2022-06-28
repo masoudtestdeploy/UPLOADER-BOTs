@@ -22,9 +22,9 @@ import re
 
 @Clinton.on_message(filters.private & ~filters.via_bot & filters.regex(pattern=".*download.*"))
 async def echox(bot, update):
-    
+    print(update.message.reply_to_message.text)
     pattern_link = re.compile(r'^\/download_(.*)')
-    matches_link = pattern_link.search(str(update.message.reply_to_message.text))
+    matches_link = pattern_link.search(update.message.reply_to_message.text)
     p_id = matches_link.group(1)
     link = gLink(p_id)
     name = nLink(p_id)
