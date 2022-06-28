@@ -4,6 +4,7 @@
 
 # the logging things
 import logging
+from plugins.buttons import *
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -47,7 +48,8 @@ async def activye(bot, update):
         text=texttt,
         parse_mode="html",
         disable_web_page_preview=True,
-        reply_to_message_id=update.message_id
+        reply_to_message_id=update.message_id,
+        reply_markup=Button.refresh
     )
     
 @Clinton.on_message(filters.private & filters.regex(pattern=".*magnet:?.*"))
