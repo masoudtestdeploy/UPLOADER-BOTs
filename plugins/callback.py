@@ -23,7 +23,7 @@ async def button(bot, update):
     elif "ref" in cb_data:
         print(update)
         texttt = active()
-        await AddUser(bot, update)
+        
         if texttt == "noActiveTorrents":
             texttts = folders()
             await bot.edit_message_text(
