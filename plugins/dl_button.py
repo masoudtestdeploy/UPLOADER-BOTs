@@ -1,8 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# (c) Shrimadhav U K | Modifieded By : @DC4_WARRIOR
-
-# the logging things
 import logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -22,34 +17,20 @@ from translation import Translation
 from plugins.custom_thumbnail import *
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes, TimeFormatter
-
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
 from PIL import Image
-import re 
-from plugins.seed import gLink,nLink
 
 
 async def ddl_call_back(bot, update):
-    print("inja")
     logger.info(update)
     cb_data = update.data
     # youtube_dl extractors
     tg_send_type, youtube_dl_format, youtube_dl_ext = cb_data.split("=")
     thumb_image_path = Config.DOWNLOAD_LOCATION + \
         "/" + str(update.from_user.id) + ".jpg"
-    try:
-        pattern_link = re.compile(r'^\/DlLink_(.*)')
-        matches_link = pattern_link.search(str(update.message.reply_to_message.text))
-        p_id = matches_link.group(1)
-        link = gLink(p_id)
-        name = nLink(p_id)
-        url = "{} | KN.{}".format(link,name)
-        youtube_dl_url = url
-    except:
-        youtube_dl_url = update.message.reply_to_message.text
-        
+    youtube_dl_url = update.message.reply_to_message.text
     custom_file_name = os.path.basename(youtube_dl_url)
     if "|" in youtube_dl_url:
         url_parts = youtube_dl_url.split("|")
@@ -133,7 +114,6 @@ async def ddl_call_back(bot, update):
                 message_id=update.message.message_id
             )
         else:
-            
             # ref: message from @SOURCES_CODES
             start_time = time.time()
             # try to upload file
@@ -189,7 +169,6 @@ async def ddl_call_back(bot, update):
             elif tg_send_type == "video":
                  width, height, duration = await Mdata01(download_directory)
                  thumb_image_path = await Gthumb02(bot, update, duration, download_directory)
-            
                  await bot.send_video(
                     chat_id=update.message.chat.id,
                     video=download_directory,
@@ -217,7 +196,6 @@ async def ddl_call_back(bot, update):
                 pass
             time_taken_for_download = (end_one - start).seconds
             time_taken_for_upload = (end_two - end_one).seconds
-            
             await bot.edit_message_text(
                 text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS.format(time_taken_for_download, time_taken_for_upload),
                 chat_id=update.message.chat.id,
