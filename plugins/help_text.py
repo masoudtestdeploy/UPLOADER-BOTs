@@ -22,6 +22,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 import re
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from plugins.seed import *
+from plugins.buttons import *
 # Def Get Info
 
 
