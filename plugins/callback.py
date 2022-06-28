@@ -7,6 +7,7 @@ from pyrogram import Client as Clinton
 from plugins.youtube_dl_button import youtube_dl_call_back
 from plugins.dl_button import ddl_call_back
 from plugins.seed import *
+from plugins.buttons import *
 
 @Clinton.on_callback_query(filters.regex('^X0$'))
 async def delt(bot, update):
@@ -20,6 +21,22 @@ async def button(bot, update):
     if "|" in cb_data:
         await youtube_dl_call_back(bot, update)
     elif "ref" in cb_data:
-        print(update)
+        texttt = active()
+        await AddUser(bot, update)
+        if texttt == "noActiveTorrents":
+            texttts = folders()
+            await bot.edit_message_text(
+                text=texttts,
+                chat_id=update.message.chat.id,
+                message_id=update.message.message_id
+            )
+        else:    
+            await bot.edit_message_text(
+                text=texttt,
+                chat_id=update.message.chat.id,
+                message_id=update.message.message_id,
+                reply_markup=Button.refresh
+            )
+            
     elif "=" in cb_data:
         await ddl_call_back(bot, update)
