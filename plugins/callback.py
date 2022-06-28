@@ -21,20 +21,21 @@ async def button(bot, update):
     if "|" in cb_data:
         await youtube_dl_call_back(bot, update)
     elif "ref" in cb_data:
+        print(update)
         texttt = active()
         await AddUser(bot, update)
         if texttt == "noActiveTorrents":
             texttts = folders()
             await bot.edit_message_text(
                 text=texttts,
-                chat_id=update.message.chat.id,
-                message_id=update.message.message_id
+                chat_id=update.chat.id,
+                message_id=update.message_id
             )
         else:    
             await bot.edit_message_text(
                 text=texttt,
-                chat_id=update.message.chat.id,
-                message_id=update.message.message_id,
+                chat_id=update.chat.id,
+                message_id=update.message_id,
                 reply_markup=Button.refresh
             )
             
