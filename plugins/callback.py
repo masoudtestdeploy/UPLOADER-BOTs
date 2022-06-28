@@ -23,7 +23,7 @@ async def button(bot, update):
     elif "ref" in cb_data:
         
         texttt = active()
-        
+        await update.message.delete(True)
         if texttt == "noActiveTorrents":
             texttts = folders()
             print(texttts)
@@ -33,11 +33,7 @@ async def button(bot, update):
                 #parse_mode="html",
                 #reply_markup=Button.BUTTONS01
             )
-            await bot.edit_message_text(
-                text=texttts,
-                chat_id=update.chat.id,
-                message_id=update.message_id
-            )
+            
         else:    
           print(texttt)
           await bot.send_message(
@@ -46,12 +42,7 @@ async def button(bot, update):
                 #parse_mode="html",
                 reply_markup=Button.refresh
           )
-          await bot.edit_message_text(
-                text=texttt,
-                chat_id=update.message.chat.id,
-                message_id=update.message.message_id
-                reply_markup=Button.refresh
-          )
+         
             
     elif "=" in cb_data:
         await ddl_call_back(bot, update)
